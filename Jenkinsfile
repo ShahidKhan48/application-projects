@@ -4,9 +4,12 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/ShahidKhan48/application-projects.git'
+                git branch: 'main',
+                url: 'https://github.com/ShahidKhan48/application-projects.git',
+                credentialsId: 'github-cred'
             }
         }
+
 
         stage('Deploy to Kubernetes') {
             steps {

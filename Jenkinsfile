@@ -2,15 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                url: 'https://github.com/ShahidKhan48/application-projects.git',
-                credentialsId: 'github-cred'
-            }
-        }
-
-
+        
         stage('Deploy to Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'k8s-cred']) {

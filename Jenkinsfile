@@ -5,7 +5,7 @@ pipeline {
         
         stage('Deploy to Kubernetes') {
             steps {
-               withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) { 
+               withCredentials([file(credentialsId: 'k8s-cred', variable: 'KUBECONFIG')]) { 
                    sh ''' # Install kubectl at runtime 
                    curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" 
                    chmod +x kubectl 
